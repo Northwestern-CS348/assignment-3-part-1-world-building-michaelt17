@@ -37,3 +37,8 @@ fact: (at pos1 pos1 tile6)
 fact: (at pos1 pos1 tile3)
 fact: (at pos1 pos1 tile4)
 fact: (at pos1 pos1 tile5)
+
+fact: (movable tile2 pos2 pos1 pos2 pos2)
+fact: (movable tile8 pos1 pos2 pos2 pos2)
+fact: (movable tile4 pos3 pos2 pos2 pos2)
+fact: (movable tile6 pos2 pos3 pos2 pos2)
