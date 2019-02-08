@@ -1,10 +1,9 @@
 from logical_classes import *
 from kb_and_inference_engine import *
 from read import *
-from abc import ABC, abstractmethod
 import os
 
-class GameMaster(ABC):
+class GameMaster(object):
 
     TXTS_DIRECTORY_PATH='flatfiles'
 
@@ -12,12 +11,11 @@ class GameMaster(ABC):
         self.kb = KnowledgeBase([], [])
         self.moveableQuery = self.produceMovableQuery()
 
-    @abstractmethod
     def produceMovableQuery(self):
         raise NotImplementedError('Subclasses must override produceMovableQuery() '\
             'to provide the query for facts starting with MOVABLE predicate')
 
-    def getMovables(self):        
+    def getMovables(self):
         listOfBindings = self.kb.kb_ask(self.moveableQuery)
         if listOfBindings:
             return [instantiate(self.moveableQuery.statement,bindings)\
@@ -34,7 +32,7 @@ class TowerOfHanoiGame(GameMaster):
 
     def __init__(self):
         super().__init__()
-        
+
     def produceMovableQuery(self):
         return parse_input('fact: (movable ?disk ?init ?target)')
 
@@ -45,5 +43,3 @@ class Puzzle8Game(GameMaster):
 
     def produceMovableQuery(self):
         return parse_input('fact: (movable ?piece ?initX ?initY ?targetX ?targetY)')
-
-
